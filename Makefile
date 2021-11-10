@@ -1,7 +1,12 @@
 RGBASM = rgbasm
 RGBLINK = rgblink
 
-RM_F = rm -f
+RM_F =
+ifeq ($(OS), Windows_NT)
+	RM_F = Del
+else
+	RM_F = rm -f
+endif
 
 ASMFLAGS = -h
 LINKFLAGS = -x
