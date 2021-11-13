@@ -42,7 +42,5 @@ The gbdev community and especially the awsome gbdev [repo](https://github.com/gb
 and especially
 * [rgbds](https://github.com/gbdev/rgbds) - for the awsome development toolchain
 * [The pandocs](https://gbdev.io/pandocs/) - for the awsome docs
-* [Harry Mulders Gameboy dev tools](http://www.devrs.com/gb/hmgd/intro.html) - for the awsome tile design tools
-=======
-in order to inclde it in the small bootrom program (256 bytes).
+* [Harry Mulders Gameboy dev tools](http://www.devrs.com/gb/hmgd/intro.html) - for the awsome tile design tools.
 
