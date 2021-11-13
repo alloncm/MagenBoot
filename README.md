@@ -33,3 +33,11 @@ Built and tested on Windows 10 and Linux (Ubuntu 20.4)
 
 The repo also contains a python script to encode a tile data binary file 
 in order to inclde it in a small bootrom program (256 bytes).
+
+## Credits
+
+The gbdev community and especially the awsome gbdev [repo](https://github.com/gbdev/awesome-gbdev) for all the great tools and resources
+and especially
+* [rgbds](https://github.com/gbdev/rgbds) - for the awsome development toolchain
+* [The pandocs](https://gbdev.io/pandocs/) - for the awsome docs
+* [Harry Mulders Gameboy dev tools](http://www.devrs.com/gb/hmgd/intro.html) - for the awsome tile design tools
