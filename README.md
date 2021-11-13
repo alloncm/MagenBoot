@@ -2,6 +2,8 @@
 
 A custom copyright free Gameboy (DMG) bootrom Im making for my own GameBoy emulator - [MagenBoy](https://github.com/alloncm/MagenBoy)
 
+![image](https://user-images.githubusercontent.com/25867720/141656838-32758f77-ed39-4443-8edc-d1a90751cb00.png)
+
 ## Current state
 
 This project is currently a WIP and developed over a weekend for fun.
@@ -32,4 +34,4 @@ Built and tested on Windows 10 and Linux (Ubuntu 20.4)
 ## Tools
 
 The repo also contains a python script to encode a tile data binary file 
-in order to inclde it in a small bootrom program (256 bytes).
+in order to inclde it in the small bootrom program (256 bytes).
