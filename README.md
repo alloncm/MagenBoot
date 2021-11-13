@@ -1,11 +1,29 @@
 # MagenBoot
 
-A custom copyright free Gameboy (DMG) bootrom Im making for my own GameBoy emulator -[MagenBoy](https://github.com/alloncm/MagenBoy)
+A custom copyright free Gameboy (DMG) bootrom Im making for my own GameBoy emulator - [MagenBoy](https://github.com/alloncm/MagenBoy)
+
+## Current state
+
+This project is currently a WIP and developed over a weekend for fun.
+
+This my first time writing an actual software in any kind of assembly so any tips and suggestions are welcomed!
+
+I tried to stracture the file in a sensible way but the code is still a bit messy.
+
+### Features
+
+* Custom boot screen made by me
+* Scrolling with a twist
+
+### Future plans
+
+* Cycle accuracy with the original bootrom
+* Sound
 
 ## Building
 
-* Make sure `make` and `rgbds` are installed.
-* execute the `make` command
+* Make sure `make` and `rgbds` are installed. (On Windows both can be installed with chocolatey package manager)
+* execute `make`
 
 ### Platforms
 
