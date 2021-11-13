@@ -18,8 +18,8 @@ Main::
     ld bc, $00A0    ; OAM size
     call Memset    ; init oam
 
-    ld hl, $9903
-    ld de, $9923
+    ld hl, $9A43
+    ld de, $9A63
     ld b, 29
     ld a, 1
     call SetTilemap
@@ -35,11 +35,32 @@ Main::
     ld a, %10010001 ; Turn lcd and BG on
     ld [$ff40], a
 
-    .loop:
-        halt
-        jr .loop
-
+    .scrollLoop
+        ld b, $F       ; wait time
+        call Wait
+        ld a, [$FF42]
+        inc a
+        ld [$FF42], a
+        cp a, $50
+        jr nz, .scrollLoop
+    
+    ld c, $5        ; counter for the wait loop, determines the length of the wait
+    .waitLoop
+        ld b, $FF
+        call Wait
+        dec c
+        jr nz, .waitLoop
+    
     jp FinishBoot
+
+; mut b - wait length
+Wait:   
+    ld a, [$FF44]
+    cp a, $90
+    jr nz, Wait
+    dec b
+    jr nz, Wait
+    ret
 
 ; mut hl - start address of the tilemap
 ; mut de - second start address
