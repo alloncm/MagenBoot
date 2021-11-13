@@ -2,6 +2,8 @@
 
 A custom copyright free Gameboy (DMG) bootrom Im making for my own GameBoy emulator - [MagenBoy](https://github.com/alloncm/MagenBoy)
 
+![image](https://user-images.githubusercontent.com/25867720/141656838-32758f77-ed39-4443-8edc-d1a90751cb00.png)
+
 ## Current state
 
 This project is currently a WIP and developed over a weekend for fun.
@@ -41,3 +43,6 @@ and especially
 * [rgbds](https://github.com/gbdev/rgbds) - for the awsome development toolchain
 * [The pandocs](https://gbdev.io/pandocs/) - for the awsome docs
 * [Harry Mulders Gameboy dev tools](http://www.devrs.com/gb/hmgd/intro.html) - for the awsome tile design tools
+=======
+in order to inclde it in the small bootrom program (256 bytes).
+
