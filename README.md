@@ -2,11 +2,11 @@
 
 A custom copyright free Gameboy (DMG) bootrom Im making for my own GameBoy emulator - [MagenBoy](https://github.com/alloncm/MagenBoy)
 
-![image](https://user-images.githubusercontent.com/25867720/141656838-32758f77-ed39-4443-8edc-d1a90751cb00.png)
+![image](https://user-images.githubusercontent.com/25867720/141697694-a24ea751-7c32-41bd-8d90-e36b9b8bb0c9.png)
 
 ## Current state
 
-This project is currently a WIP and developed over a weekend for fun.
+This project is currently WIP.
 
 This my first time writing an actual software in any kind of assembly so any tips and suggestions are welcomed!
 
