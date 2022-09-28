@@ -4,32 +4,25 @@ A custom copyright free Gameboy (DMG) bootrom Im making for my own GameBoy emula
 
 ![image](https://user-images.githubusercontent.com/25867720/141697694-a24ea751-7c32-41bd-8d90-e36b9b8bb0c9.png)
 
-## Current state
-
-This project is currently WIP.
-
-This my first time writing an actual software in any kind of assembly so any tips and suggestions are welcomed!
-
-I tried to stracture the file in a sensible way but the code is still a bit messy.
-
-### Features
+## Features
 
 * Custom boot screen made by me
-* Scrolling with a twist
+* Scrolling
+* Sound
 
 ### Future plans
 
-* Cycle accuracy with the original bootrom
-* Sound
+* Opcode accuracy with the original bootrom
 
 ## Building
 
 * Make sure `make` and `rgbds` are installed. (On Windows both can be installed with chocolatey package manager)
-* execute `make`
+* run `make`
 
-### Platforms
+### Build platforms
 
-Built and tested on Windows 10 and Linux (Ubuntu 20.4)
+* Windows 10
+* Linux (Ubuntu 20.04)
 
 ## Tools
 
@@ -43,4 +36,3 @@ and especially
 * [rgbds](https://github.com/gbdev/rgbds) - for the awsome development toolchain
 * [The pandocs](https://gbdev.io/pandocs/) - for the awsome docs
 * [Harry Mulders Gameboy dev tools](http://www.devrs.com/gb/hmgd/intro.html) - for the awsome tile design tools.
-

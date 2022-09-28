@@ -19,7 +19,7 @@ $(TARGET).bin: $(TARGET).o
 	$(RGBLINK) ${LINKFLAGS} -o $@ $^
 
 $(TARGET).o: $(SRC_DIR)/bootrom.asm
-	$(RGBASM) $(ASMFLAGS) -o $@ $^
+	$(RGBASM) $(ASMFLAGS) -i hardware.inc -o $@ $^
 
 .PHONY: clean
 clean:

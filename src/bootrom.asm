@@ -1,3 +1,8 @@
+INCLUDE "hardware.inc"
+
+DEF WAIT_LEN equ 2
+DEF SCROLL_LEN equ 10
+
 SECTION "main", ROM0[$0]
 
 Main::
@@ -9,14 +14,6 @@ Main::
     ld hl, $8000    ; vram address
     ld bc, $2000    ; vram size        
     call Memset    ; init vram
-
-    ld hl, $C000    ; ram address
-    ld bc, $2000    ; ram size
-    call Memset    ; init ram
- 
-    ld hl, $FE00    ; OAM adress
-    ld bc, $00A0    ; OAM size
-    call Memset    ; init oam
 
     ld hl, $9A43
     ld de, $9A63
@@ -35,22 +32,38 @@ Main::
     ld a, %10010001 ; Turn lcd and BG on
     ld [$ff40], a
 
-    .scrollLoop
-        ld b, $F       ; wait time
-        call Wait
-        ld a, [$FF42]
-        inc a
-        ld [$FF42], a
-        cp a, $50
-        jr nz, .scrollLoop
-    
-    ld c, $5        ; counter for the wait loop, determines the length of the wait
-    .waitLoop
-        ld b, $FF
-        call Wait
-        dec c
-        jr nz, .waitLoop
-    
+.scrollLoop
+    ld b, SCROLL_LEN    ; wait time
+    call Wait
+    ld a, [$FF42]
+    inc a
+    ld [$FF42], a
+    cp a, $50
+    jr nz, .scrollLoop
+     
+    ; start sound
+    ld a, %01110111 ; left and right max volume
+    ld [rNR50], a
+    ld a, %10001    ; turn channel 1 on
+    ld [rNR51], a
+    ld a, $80       ; enable sound
+    ld [rNR52], a
+    ld a, %10000000 ; normal wave duty and max len
+    ld [rNR11], a
+    ld a, $F1       ; 0xF volume, volume envelope len 1
+    ld [rNR12], a
+    ld a, $FF       ; 0xFF low freq 
+    ld [rNR13], a
+    ld a, %11000110 ; start sound, terminated by len, 0x6 high freq
+    ld [rNR14], a
+
+    ld c, WAIT_LEN  ; counter for the wait loop, determines the length of the wait
+.waitLoop
+    ld b, $FF   ; max wait for Wait proc, 
+    call Wait
+    dec c
+    jr nz, .waitLoop
+
     jp FinishBoot
 
 ; mut b - wait length
@@ -81,8 +94,8 @@ SetTilemap:
     pop hl
     cp a, b
     jr nz, SetTilemap
-    .return
-        ret
+.return
+    ret
 
 ; mut hl - dst (address to set)
 ; mut bc - len (non zero length)
@@ -100,9 +113,9 @@ Memset:
 
     ld a, d     ; loads a
     ret
-    .continue:
-        ld a, d ; loads a
-        jr Memset
+.continue:
+    ld a, d ; loads a
+    jr Memset
 
 ; mut hl - dst (address to copy to)
 ; mut bc - src (adress to copy from)
@@ -130,24 +143,24 @@ DecodeLogoToVram:
     ld d, a
     ld e, a
     ld c, 2
-    .decodeNibleToByte
-        ld b, 4
-        .mulBit
-            rl d
-            rla
-            rl e
-            rla
-            dec b
-            jr nz, .mulBit
-        ld b, 2
-        .loadValueToVram
-            ldi [hl], a
-            ld [hl], 0      ; redunant the vram is already zeroed
-            inc hl
-            dec b
-            jr nz, .loadValueToVram
-        dec c
-        jr nz, .decodeNibleToByte
+.decodeNibleToByte
+    ld b, 4
+.mulBit
+    rl d
+    rla
+    rl e
+    rla
+    dec b
+    jr nz, .mulBit
+    ld b, 2
+.loadValueToVram
+    ldi [hl], a
+    ld [hl], 0      ; redunant the vram is already zeroed
+    inc hl
+    dec b
+    jr nz, .loadValueToVram
+    dec c
+    jr nz, .decodeNibleToByte
     pop bc
     pop de
     inc bc
